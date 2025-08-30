@@ -1,14 +1,15 @@
 import pkg from 'pg'
 import dotenv from 'dotenv'
 
+// Käytettävän ympäristön määrittäminen
 const environment = process.env.NODE_ENV || 'development'
-
+// Lukee .env tiedoston muuttujat process.env:iin
 dotenv.config()
-
+// Lukee portin ympäristömuuttujasta
 const port = process.env.PORT
 
 const { Pool } = pkg
-
+// Funktio tietokantayhteyden avaamiseen
 const openDb = () => {
     const pool = new Pool({
         user: process.env.DB_USER,
@@ -21,7 +22,7 @@ const openDb = () => {
 
     return pool
 }
-
+// Luo pool yhteyden
 const pool = openDb()
 
 export { pool }

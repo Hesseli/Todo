@@ -1,12 +1,14 @@
 import { expect } from "chai";
 import { initializeTestDb, insertTestUser, getToken } from "./helper/test.js";
 
+// TODO tehtävien perusfunktioiden testejä
 describe("Testing basic database functionality", () => {
     let token = null
     const testUser = { email: "foo@foo.com", password: "password123"}
+    // Ajetaan ennen testejä
     before(() => {
-        initializeTestDb()
-        token = getToken(testUser.email)
+        initializeTestDb() // Alustetaan tietokanta
+        token = getToken(testUser.email) // Haetaan testikäyttäjän token
     })
 
     it("should get all tasks", async () => {
@@ -60,10 +62,10 @@ describe("Testing basic database functionality", () => {
         expect(data).to.include.all.keys("error")
     })
 })
-
+// Käyttäjän hallinnan testejä
 describe("Testing user management", () => {
     const newUser = { email: "foo2@test.com", password: "password123"}
-
+        // Lisää testikäyttäjän ennen testejä
         before(() => {
         insertTestUser(newUser.email, newUser.password)
     })

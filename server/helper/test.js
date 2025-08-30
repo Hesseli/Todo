@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken'
 
 const __dirname = import.meta.dirname
 
+// Alustaa testitietokannan
+// Lukee db.sql tiedoston ja suorittaa sen tietokantaan
 const initializeTestDb = () => {
     const sql = fs.readFileSync(path.resolve(__dirname, '../db.sql'), 'utf8')
 
@@ -19,7 +21,8 @@ const initializeTestDb = () => {
         }
     })
 }
-
+// Lisää testikäyttäjän tietokantaan
+// Salasana hashataan enne tallennusta
 const insertTestUser = (email, password) => {
     hash(password, 10, (err, hashedPassword) => {
         if (err) {
@@ -39,7 +42,8 @@ const insertTestUser = (email, password) => {
         })
     })
 }
-
+// Generoi JWT-tokenin testikäyttäjälle
+// Palauttaa tokenin, jota voi käyttää suojattuihin API-kutsuihin testeissä
 const getToken = (email) => {
     return jwt.sign({ email }, process.env.JWT_SECRET_KEY)
 }

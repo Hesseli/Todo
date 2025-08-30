@@ -4,9 +4,9 @@ import { getTasks, postTask, deleteTask } from '../controllers/TaskController.js
 
 const router = Router()
 
-router.get("/", getTasks)
-router.post("/create", auth, postTask)
-router.delete("/delete/:id", auth, deleteTask)
+router.get("/", getTasks) // Hakee kaikki tehtävät
+router.post("/create", auth, postTask) // Luo uuden tehtävän
+router.delete("/delete/:id", auth, deleteTask) // Poistaa tehtävän id:n perusteella
 /*
 router.get('/', (req, res, next) => {
     pool.query('SELECT * FROM task',(err, result) => {

@@ -67,7 +67,7 @@ describe("Testing user management", () => {
     const newUser = { email: "foo2@test.com", password: "password123"}
         // Lisää testikäyttäjän ennen testejä
         before(() => {
-        insertTestUser(newUser.email, newUser.password)
+        insertTestUser(newUser)
     })
 
     it("should sign up", async () => {

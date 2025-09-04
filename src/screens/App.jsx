@@ -34,8 +34,8 @@ function App() {
         // Lisää uuden tehtävän listaan ja tyhjentää input kentän
         setTasks([...tasks, response.data])
         setTask("")
-      });
-  };
+      })
+  }
 
   // Tehtävän poistaminen
   const deleteTask = (deleted) => {
@@ -45,8 +45,8 @@ function App() {
       .then(response => {
         // Suodattaa poistetun tehtävän pois listasta
         setTasks(tasks.filter(item => item.id !== deleted))
-      });
-  };
+      })
+  }
 
   return (
       <div id="container">
